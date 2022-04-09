@@ -1,0 +1,91 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="favicon.png">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap5" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/tiny-slider.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/glightbox.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>추천페이지</title>
+</head>
+
+
+<body>
+<div th:replace="fragments/bodyHeader :: bodyHeader" />
+
+
+
+
+
+
+<div class="section sec-5">
+    <div class="container">
+
+    <div class="section sec-3">
+        <div class="container">
+
+            <div class="row mb-5 justify-content-between">
+                <div class="col-lg-6 mb-lg-0 mb-4">
+                    <img src="/images/img_7.jpg" alt="Image" class="img-fluid">
+                </div>
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>상품명</th>
+
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                   <!-- <tr th:each="item : ${detail}">
+                        <td th:text="${detail.id}"></td>
+                        <td th:text="${detail.name}"></td>
+
+                    </tr>-->
+                    </tbody>
+                </table>
+
+
+            </div>
+
+        </div>
+
+
+<div class="row">
+    <div class="col-sm-3 border-left">
+        <span class="text-black-50 d-block">밤안개</span> 2020
+    </div>
+    <div class="col-sm-3 border-left">
+        <span class="text-black-50 d-block">하 어저냐 </span> XYZ Inc.
+    </div>
+    <div class="col-sm-3 border-left">
+        <span class="text-black-50 d-block">Started:</span> 25 Jan 2020
+    </div>
+    <div class="col-sm-3 border-left">
+        <span class="text-black-50 d-block">Finished:</span> 02 Dec 2020
+    </div>
+</div>
+
+    </div>
+</div>
+</div>
+
+</body>
+<div th:replace="fragments/footer :: footer2"/>

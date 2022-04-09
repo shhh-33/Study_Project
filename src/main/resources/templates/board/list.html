@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="favicon.png">
+
+    <meta name="description" content=""/>
+    <meta name="keywords" content="bootstrap, bootstrap5"/>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/css/tiny-slider.css">
+    <link rel="stylesheet" href="/css/aos.css">
+    <link rel="stylesheet" href="/css/glightbox.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" th:href="@{/css/base.css}" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+
+    <title>게시글 목록</title>
+</head>
+<div th:replace="fragments/bodyHeader :: bodyHeader" />
+<!--버튼 함수  -->
+<script>
+    $(function() {
+        $(".delButton").click(function() {
+            location.href = "delete?bno=" + $(this).attr("data-bno");
+        });
+
+        $(".pagination a").click(function(e) {
+            //alert($(this).attr('href'));
+            e.preventDefault();//본래 기능은 취소한다.
+            $("#f1").find("[name='page']").val($(this).attr('href'));
+            //아이디가 f1인 form에서 이름이 page인 애를 찾아서 그 value를 위에서 지정한 href 속성으로 바꿔라
+            $("#f1").submit();
+        });
+
+    });
+</script>
+
+<body>
+
+<div class="section sec-5">
+    <div class="container">
+        <div>
+
+
+            <div class="page-header">
+                <h1>💡 게시글 목록 💡</h1>
+            </div>
+
+            <div id="mainHide">
+                <table class="table table-hover">
+
+                <thead>
+                <tr>
+                    <th scope="col-md-1">#</th>
+                    <th scope="col-md-5">제목</th>
+                    <th scope="col-md-2">작성자</th>
+                    <th scope="col-md-2">작성일</th>
+                 <!--   <th scope="col-md-2">조회수</th>-->
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="post : ${list}">
+                    <th>
+                        <span th:text="${post.id}"></span>
+                    </th>
+
+                    <td>
+                        <a th:href="@{'/post/' + ${post.id}}">
+                            <span th:text="${post.title}"></span>
+                        </a>
+                    </td>
+
+                    <td>
+                        <span th:text="${post.author}"></span>
+                    </td>
+
+                    <td>
+                        <span th:text="${#temporals.format(post.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
+                    </td>
+
+
+
+                 <!--   <td>
+                        <span th:text="${user.username}"></span>
+                    </td>-->
+                </tr>
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-auto mr-auto"></div>
+                <div class="col-auto">
+                    <a class="btn btn-primary" th:href="@{/post}" role="button">글쓰기</a>
+                </div>
+            </div>
+
+
+
+                <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+                    <a th:if="${page != nowPage}" th:href="@{/board/(page = ${page - 1})}" th:text="${page}"></a>
+                    <strong th:if="${page == nowPage}" th:text="${page}" style="color : red"></strong>
+                </th:block>
+
+
+                <form th:action="@{/board}" method="get">
+                    <input type="text" name="searchKeyword">
+                    <button type="submit">검색</button>
+                </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div th:replace="fragments/footer :: footer2"/>
+</div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html
+        lang="ko"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+
+    <title>노트</title>
+    <meta charset="UTF-8"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Untree.co">
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap5" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    >
+    <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
+    >
+
+
+
+
+
+
+    <link rel="shortcut icon" href="favicon.png">
+
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/tiny-slider.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/glightbox.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+<div th:replace="fragments/bodyHeader :: bodyHeader" />
+<!-- 개인 user만 접근할 수 있는 페이지 -->
+
+<div class="section sec-5">
+<div class="container">
+    <br>
+    <h1>💡 개인노트 💡</h1>
+
+    <!-- 노트 작성 Modal Button -->
+    <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#newNoteModal"
+            data-bs-whatever="@mdo">
+        새 글 쓰기
+    </button>
+<br><br>
+    <!-- 노트 작성 Modal -->
+    <div
+            class="modal fade"
+            id="newNoteModal"
+            tabindex="-1"
+            aria-labelledby="newNoteModalLabel"
+            aria-hidden="true"
+    >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newNoteModalLabel">새 글 쓰기</h5>
+                    <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close">
+                    </button>
+                </div>
+                <form
+                        th:action="@{/note}"
+                        method="post"
+                >
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="title" class="col-form-label">제목</label>
+                            <input type="text" class="form-control" id="title" name="title">
+                        </div>
+                        <div class="mb-3">
+                            <label for="content" class="col-form-label">내용</label>
+                            <textarea class="form-control" rows="20" id="content" name="content"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">종료</button>
+                        <button type="submit" class="btn btn-primary">저장</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 노트 내용 조회 -->
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <!-- 노트 개수만큼 반복 -->
+            <div class="border border-dark" th:each="note : ${notes}">
+                <h2 th:text="${note.title}"></h2>
+                <div>
+                    <p th:text="${note.content}" style="white-space: pre-wrap;"></p>
+                    <form th:action="@{/note}" th:method="delete">
+                        <input type="hidden" name="id" th:value="${note.id}">
+                        <!-- 노트 삭제 버튼 -->
+                        <button type="submit" class="btn btn-secondary">삭제</button>
+                        <!-- 작성일자 표시 -->
+                        <span style="margin: 10px 0px;">Posted On
+              <strong th:text="${#temporals.format(note.createdAt, 'yyyy-MM-dd')}"></strong>
+            </span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div th:replace="fragments/footer :: footer2"/>
+
+</body>
+</html>

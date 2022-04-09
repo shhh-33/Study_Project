@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="favicon.png">
+
+    <meta name="description" content=""/>
+    <meta name="keywords" content="bootstrap, bootstrap5"/>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/css/tiny-slider.css">
+    <link rel="stylesheet" href="/css/aos.css">
+    <link rel="stylesheet" href="/css/glightbox.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" th:href="@{/css/base.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+
+
+    <title>게시글 상세보기</title>
+</head>
+<div th:replace="fragments/bodyHeader :: bodyHeader"/>
+<style>
+
+    table.type02 {
+        border-collapse: separate;
+        border-spacing: 0;
+        text-align: left;
+        line-height: 1.5;
+        border-top: 1px solid #ccc;
+        border-left: 1px solid #ccc;
+        margin: 20px 10px;
+    }
+
+    table.type02 th {
+        width: 150px;
+        padding: 10px;
+        font-weight: bold;
+        vertical-align: top;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        border-top: 1px solid #fff;
+        border-left: 1px solid #fff;
+        background: #eee;
+        text-align: center;
+    }
+
+    table.type02 td {
+        width: 700px;
+        padding: 10px;
+        vertical-align: top;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        text-align: center;
+    }
+
+    table.thContent {
+        width: 3500px;
+    }
+
+</style>
+<body>
+<div class="section sec-5">
+    <div class="container">
+
+        <div class="page-header">
+            <h1>💡 게시글 상세보기 💡</h1>
+        </div>
+        <hr>
+        <br>
+
+
+
+        <div>
+            <table class="type02">
+
+                <tr>
+                    <th>제목</th>
+                    <td th:text="${post.title}"></td>
+                </tr>
+
+
+                <tr>
+                    <th>작성자</th>
+                    <td th:text="${post.author}"></td>
+                </tr>
+                <tr>
+                    <th>내용</th>
+                    <td th:text="${post.content}"></td>
+                </tr>
+
+
+                <tr>
+                    <th>등록일</th>
+                    <td th:text="${#temporals.format(post.createdDate, 'yyyy-MM-dd HH:mm')}"></td>
+                </tr>
+
+
+            </table>
+        </div>
+
+
+        <br>
+        <div>
+
+
+
+            <br>
+
+
+            <div class="row">
+                <div class="col-auto mr-auto"></div>
+
+
+                <div class="col-auto">
+                    <a class="btn btn-primary" th:href="@{'/board'}" role="button">목록</a>
+                </div>
+
+                <div class="col-auto">
+                    <a class="btn btn-primary" th:href="@{'/post/edit/' + ${post.id}}" role="button">수정</a>
+                </div>
+
+                <div class="col-auto">
+                    <form id="delete-form" th:action="@{'/post/' + ${post.id}}" method="post">
+                        <input type="hidden" name="_method" value="delete"/>
+                        <button id="delete-btn" type="submit" class="btn btn-primary">삭제</button>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+</body>
+</html>

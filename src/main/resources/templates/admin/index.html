@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html
+        lang="ko"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+
+    <title>노트</title>
+    <meta charset="UTF-8"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Untree.co">
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap5" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    >
+    <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
+    >
+
+
+
+
+
+
+    <link rel="shortcut icon" href="favicon.png">
+
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/tiny-slider.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/glightbox.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+<div th:replace="fragments/bodyHeader :: bodyHeader" />
+<!-- 개인 user만 접근할 수 있는 페이지 -->
+
+<div class="section sec-5">
+<div class="container">
+    <br>
+    <h1>💡 노트 게시 내역 💡</h1>
+    <br><br>
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div th:each="note : ${notes}">
+                <p style="margin: 10px 0px;">
+                    <strong th:text="${note.title}"></strong>
+                    Posted by
+                    <strong th:if="${note.user}" th:text="${note.user.username}"></strong> on
+                    <strong th:text="${#temporals.format(note.createdAt, 'yyyy-MM-dd')}"></strong>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div th:replace="fragments/footer :: footer2"/>
+</body>
+</html>

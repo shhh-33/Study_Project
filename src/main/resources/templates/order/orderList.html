@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="author" content="Untree.co">
+  <link rel="shortcut icon" href="favicon.png">
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="bootstrap, bootstrap5" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+  <link rel="stylesheet" href="css/tiny-slider.css">
+  <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="css/glightbox.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <title>스터디 참여 상태</title>
+</head>
+<div th:replace="fragments/bodyHeader :: bodyHeader" />
+<style>
+  table.type04 {
+    border-collapse: separate;
+    border-spacing: 1px;
+    text-align: left;
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+    margin : 20px 10px;
+  }
+  table.type04 th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+  }
+  table.type04 td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+  }
+
+
+
+
+</style>
+
+
+<body>
+<div class="section sec-5">
+<div class="container">
+  <div>
+
+    <br>
+    <div class="page-header">
+      <h1>💡 스터디 참여 상태 💡</h1>
+    </div>
+      <hr>
+
+    <div>
+      <form th:object="${orderSearch}" >
+
+        <div>
+          <input type="text" th:field="*{userName}" placeholder="회원명"/>
+        </div>
+
+
+        <div >
+          <select th:field="*{orderStatus}" >
+            <option value="">스터디상태</option>
+            <option th:each=
+                            "status : ${T(itstudy.study.domain.OrderStatus).values()}"
+                    th:value="${status}"
+                    th:text="${status}">option
+            </option>
+          </select>
+        </div>
+
+
+        <button type="submit" >검색</button>
+      </form>
+    </div>
+
+    <table class="type04">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>참여자</th>
+        <th>스터디이름</th>
+        <th>과목이름</th>
+        <th>인원수</th>
+        <th>상태</th>
+        <th>등록일시</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="item : ${orders}">
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.user.username}"></td>
+        <td th:text="${item.orderItems[0].item.name}"></td>
+        <td th:text="${item.orderItems[0].item.stockQuantity}"></td>
+        <td th:text="${item.orderItems[0].count}"></td>
+        <td th:text="${item.status}"></td>
+        <!--/*@thymesVar id="orderDate" type=""*/-->
+        <td th:text="${item.orderDate}"></td>
+        <td>
+
+          <!--order일때만 버튼 보이게-->
+          <a th:if="${item.status.name() == 'ORDER'}" href="#"  th:href="'javascript:cancel('+${item.id}+')'"
+             class="btn btn-danger">CANCEL</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+
+</div>
+</div>
+
+<div th:replace="fragments/footer :: footer2" />
+<script>
+  function cancel(id) {
+    var form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", "/orders/" + id + "/cancel");
+    document.body.appendChild(form);
+    form.submit();
+  }
+</script>
+</body>
+</html>

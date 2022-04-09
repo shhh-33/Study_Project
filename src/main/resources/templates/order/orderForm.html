@@ -1,0 +1,75 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="author" content="Untree.co">
+  <link rel="shortcut icon" href="favicon.png">
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="bootstrap, bootstrap5" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+  <link rel="stylesheet" href="css/tiny-slider.css">
+  <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="css/glightbox.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <title>스터디 참여</title>
+</head>
+
+
+<body>
+<div th:replace="fragments/bodyHeader :: bodyHeader" />
+
+<div class="section sec-5">
+<div class="container">
+
+  <br>
+  <div class="page-header">
+    <h1>💡 스터디 참여 💡</h1>
+  </div>
+  <hr>
+
+  <form role="form" action="/order" method="post">
+    <div class="form-group">
+      <label for="user">회원</label>
+      <select name="userId" id="user" class="form-control">
+        <option value="">회원선택</option>
+        <option th:each="user: ${users}"
+                th:value="${user.id}"
+                th:text="${user.username}" />
+      </select>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="item">스터디</label>
+      <select name="itemId" id="item" class="form-control">
+        <option value="">스터디선택</option>
+        <option th:each="item : ${items}"
+                th:value="${item.id}"
+                th:text="${item.name}" />
+      </select>
+    </div>
+    <br>
+
+    <div class="form-group">
+      <label for="count">참여자수</label>
+      <input type="number" name="count" class="form-control" id="count"
+             placeholder="참여자수를 입력하세요">
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <br/>
+  <div th:replace="fragments/footer :: footer2" />
+</div> <!-- /container -->
+</div>
+</body>
+</html>

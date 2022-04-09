@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="author" content="Untree.co">
+  <link rel="shortcut icon" href="favicon.png">
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="bootstrap, bootstrap5" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+  <link rel="stylesheet" href="css/tiny-slider.css">
+  <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="css/glightbox.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <title>회원목록</title>
+</head>
+<div th:replace="fragments/bodyHeader :: bodyHeader" />
+<style>
+  table.type04 {
+    border-collapse: separate;
+    border-spacing: 1px;
+    text-align: left;
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+    margin : 20px 10px;
+  }
+  table.type04 th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+  }
+  table.type04 td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+  }
+</style>
+
+
+<body>
+
+<div class="section sec-5">
+<div class="container">
+  <div>
+
+    <br>
+    <div class="page-header">
+      <h1>💡 회원목록 💡</h1>
+    </div>
+    <hr>
+
+    <table class="type04">
+      <thead>
+      <tr>
+
+        <th>ID</th>
+        <th>Password</th>
+
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr th:each="user : ${users}">
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.password}"></td>
+
+
+      </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+
+
+</div>
+</div>
+
+<div th:replace="fragments/footer :: footer2" />
+</body>
+</html>

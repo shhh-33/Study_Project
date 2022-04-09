@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="favicon.png">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap5" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/tiny-slider.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/glightbox.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+
+<div class="header" th:fragment="bodyHeader">
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <!-- 배경색 참고
+    <div class="sec-3 section bg-light">-->
+
+    <!--메뉴 헤더로 -->
+
+    <nav  class="site-nav">
+        <div class="container" style="background-color: #eaeaea" >
+            <div class="site-navigation" >
+
+
+                <a href="/" class="logo m-0 float-start">Study<span class="text-primary">.</span> </a>
+
+
+
+                <a href="#" class="burger ml-auto float-end site-menu-toggle light js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
+                    <span></span>
+                </a>
+                <ul class="site-menu float-end d-none d-md-block">
+
+
+                    <li class="nav-item">
+                        <p
+                                class="nav-link active"
+                                sec:authorize="isAuthenticated()"
+                                sec:authentication="name">
+                        </p>
+
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{/}">홈</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <!-- 관리자만 -->
+                        <a
+                                class="nav-link active"
+                                sec:authorize="hasAnyRole('ROLE_ADMIN')"
+                                th:href="@{/admin/page}"
+                        >
+                            관리자 페이지
+                        </a>
+                    </li>
+
+
+
+                    <li class="nav-item">
+                        <!-- 로그인한 사람 모두 -->
+                        <a
+                                class="nav-link active"
+                                sec:authorize="isAuthenticated()"
+                                th:href="@{/notice}"
+                        >
+                            공지사항
+                        </a>
+                    </li>
+
+
+
+                    <li class="nav-item">
+                        <!-- 유저만 -->
+                        <a
+                                class="nav-link active"
+                                sec:authorize="hasAnyRole('ROLE_USER')"
+                                th:href="@{/note}"
+                        >
+                            개인노트
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <!-- 로그인 안한 사람만 -->
+                        <a
+                                class="nav-link active"
+                                sec:authorize="!isAuthenticated()"
+                                th:href="@{/login}"
+                        >
+                            로그인
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <!-- 로그인 안한 사람만 -->
+                        <a
+                                class="nav-link active"
+                                sec:authorize="!isAuthenticated()"
+                                th:href="@{/signup}"
+                        >
+                            회원가입
+                        </a>
+                    </li>
+
+
+
+
+                    <li class="nav-item">
+                        <!-- 로그인한 사람만 -->
+                        <a
+                                class="nav-link active"
+                                sec:authorize="isAuthenticated()"
+                                th:href="@{/logout}"
+                        >
+                            로그아웃
+                        </a>
+                    </li>
+
+
+                    <!--링크이동-->
+            <!--        <li><a href="/admin" class="d-flex align-items-center text-white h2 fw-bold"> <span>관리자모드</span></a></li>-->
+                  <!--  <li><a href="/login" class="d-flex align-items-center text-white h2 fw-bold"> <span>로그인</span></a></li>-->
+                </ul>
+
+
+
+            </div>
+        </div>
+    </nav>
+
+</div>

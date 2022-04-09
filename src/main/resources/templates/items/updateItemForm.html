@@ -1,0 +1,72 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="/favicon.png">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap5" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/css/tiny-slider.css">
+    <link rel="stylesheet" href="/css/aos.css">
+    <link rel="stylesheet" href="/css/glightbox.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <title>Study</title>
+</head>
+
+
+<body>
+<div th:replace="fragments/bodyHeader :: bodyHeader" />
+
+<div class="section sec-5">
+    <div class="container">
+
+        <br>
+        <div class="page-header">
+            <h1>💡 스터디 목록 수정💡</h1>
+        </div>
+        <hr>
+
+
+    <form th:object="${form}" method="post"> <!--post 방식으로 보내기-->
+        <!-- id -->
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="form-group">
+            <label th:for="name">스터디명</label>
+            <input type="text" th:field="*{name}" class="form-control" placeholder="이름을 입력하세요" />
+        </div>
+
+        <br>
+        <div class="form-group">
+            <label th:for="stockQuantity">참여자수</label>
+            <input type="number" th:field="*{stockQuantity}" class="form-control" placeholder="참여자수를 입력하세요" />
+        </div>
+        <br>
+        <div class="form-group">
+            <label th:for="subject">과목</label>
+            <input type="text" th:field="*{subject}" class="form-control" placeholder="과목이름을 입력하세요" />
+        </div>
+        <br>
+        <div class="form-group">
+            <label th:for="host">주최자</label>
+            <input type="text" th:field="*{host}" class="form-control" placeholder="주최자를 입력하세요" />
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <div th:replace="fragments/footer :: footer2" />
+</div> <!-- /container -->
+</div>
+</body>
+</html>

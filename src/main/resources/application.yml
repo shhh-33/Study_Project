@@ -1,0 +1,37 @@
+spring: #띄어쓰기 제대로.....
+  datasource: #2칸
+    url: jdbc:mysql://localhost:3306/book?serverTimezone=Asia/Seoul
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jpa:
+      database: mysql
+      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+      generate-ddl: true
+      show-sql: true
+
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+  jpa: #2칸
+    hibernate: #4칸
+      ddl-auto: create #6칸
+    properties: #4칸
+      hibernate: #6칸
+        # show_sql: true #8칸
+        format_sql: true #8칸
+logging.level: #없음
+  org.hibernate.SQL: debug #2칸
+  org.hibernate.type: trace #2
+
+
+
+
+# session
+server:
+  servlet:
+    session:
+      timeout: 10m # 기본이 30분이고 최소는 1분입니다.
+
