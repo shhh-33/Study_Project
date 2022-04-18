@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 public class Notice {
 
-    //user가 없음 관리자가 썻을테니
+    //user가 없음 관리자가 썼을테니
     @Id
     @GeneratedValue
     private Long id;
