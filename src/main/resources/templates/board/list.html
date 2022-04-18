@@ -29,11 +29,11 @@
     <title>게시글 목록</title>
 </head>
 <div th:replace="fragments/bodyHeader :: bodyHeader" />
-<!--버튼 함수  -->
+<!--버튼 함수
 <script>
     $(function() {
         $(".delButton").click(function() {
-            location.href = "delete?bno=" + $(this).attr("data-bno");
+            location.href = "delete?id=" + $(this).attr("data-id");
         });
 
         $(".pagination a").click(function(e) {
@@ -45,7 +45,7 @@
         });
 
     });
-</script>
+</script>-->
 
 <body>
 

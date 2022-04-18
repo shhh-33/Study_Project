@@ -96,7 +96,7 @@ public class ItemController {
     @PostMapping(value = "/items/{itemId}/edit") //post로 받았다.
     public String updateItem(@ModelAttribute("form") StudyForm form) { //th:object="${form}" 넘어오게 (이름은 상관없)
 
-        itemService.updateItem(form.getId(),form.getName(),form.getStockQuantity());
+        itemService.updateItem(form.getId(),form.getName(),form.getStockQuantity(),form.getHost());
 
         return "redirect:/items";
 

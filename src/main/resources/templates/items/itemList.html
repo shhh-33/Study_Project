@@ -52,55 +52,50 @@
 
 <body>
 <div class="section sec-5">
-<div class="container">
-  <br>
-  <div class="page-header">
-    <h1>💡 스터디 목록 💡</h1>
+  <div class="container">
+    <br>
+    <div class="page-header">
+      <h1>💡 스터디 목록 💡</h1>
+    </div>
+    <hr>
+
+    <div>
+      <table class="type04">
+        <thead>
+        <tr>
+
+          <th>스터디명</th>
+          <th>과목</th>
+          <th>주최자</th>
+          <th>참여가능 인원수</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${items}">
+
+          <td th:text="${item.name}"></td>
+          <td th:text="${item.subject}"></td>
+          <td th:text="${item.host}"></td>
+
+          <td th:text="${item.stockQuantity}"></td>
+          <td>
+
+
+
+
+
+            <a href="#" th:href="@{/items/{id}/edit (id=${item.id})}"
+               class="btn btn-primary" role="button"
+               sec:authorize="hasAnyRole('ROLE_ADMIN')">수정</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+
   </div>
-  <hr>
-
-  <div>
-    <table class="type04">
-      <thead>
-      <tr>
-        <th>#</th>
-        <th>스터디명</th>
-        <th>과목</th>
-        <th>주최자</th>
-        <th>참여가능 인원수</th>
-        <th></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr th:each="item : ${items}">
-        <td th:text="${item.id}"></td>
-        <td th:text="${item.name}"></td>
-        <td th:text="${item.subject}"></td>
-        <td th:text="${item.host}"></td>
-
-        <td th:text="${item.stockQuantity}"></td>
-        <td>
-
-
-
-          <button
-                  href="#" th:href="@{/items/{id}/edit (id=${item.id})}"
-                  type="button"
-                  class="btn btn-primary"
-                  sec:authorize="hasAnyRole('ROLE_ADMIN')"
-                  data-bs-toggle="modal"
-                  data-bs-target="#newNoticeModal"
-                  data-bs-whatever="@mdo">
-            CANCEL
-          </button>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-
-
-</div>
 </div>
 
 <div th:replace="fragments/footer :: footer2" />

@@ -24,6 +24,7 @@ public abstract class Item {
     private Long id;
 
     private String name; //스터디명
+    private String host; //스터디명
 
     private int stockQuantity; //남은 참여자수
 

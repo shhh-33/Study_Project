@@ -32,15 +32,7 @@ public class Order { //주문엔티티
     private User user; //주문회원
 
 
-    /*
-     *cascade 안하면
-     * persist(orderItemA)
-     * persist(orderItemB)
-     * persist(orderItemC) 이렇게 해야하함
-     * 그래서
-     * persist(order) 로 끝내게
-     *
-     */
+
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL) //order에 의해서 매핑됐다 , 주인아님
     private List<OrderItem> orderItems = new ArrayList<>();
 
@@ -52,36 +44,7 @@ public class Order { //주문엔티티
     private OrderStatus status; //주문상태 [ORDER ,CANCEL}
 
 
-    /*
-     * 회원엔티티
-     * Member는 orders를 list로 가지고 있다
-     * Order도 멤버를 가지고 있다 .양방향 참조중!
-     * 근데 문제는
-     * DB의 fk는 member_id 뿐
-     * member_id의 관계를 바꾸고 싶으면 외래키 값을 변경해야하는데
-     * Member에도 orders와 관련된 필드가 있고
-     * Order에도 멤버필드가 있는데
-     * 둘중에 jpa는 뭘 확인해서 fk를 바꿔야하냐?
-     * fk값 있는 쪽을 연관관계 주인으로해서 업데이트
-     * 그러면 fk없는 쪽은 읽기전용으로 된다.
-     *
-     */
 
-    /*
-    일대일 관계일시에는 많이 참조하는 테이블에 외래키 둘것 그래서 주문정보에 둘거임 배송정보 말고
-     */
-
-    /*
-        원래라면..근데 놓칠 수 도 있으니까
-        밑처럼 원자적으로 묶어버린다
-      public static void main(String[] args){
-        Member member = new Member();
-        Order order = new Order();
-
-        member.getOrders().add(order);
-        order.setMember(member)
-    }
-     * */
 
 
     //==연관관계 메서드== 양방향 연관관계일때

@@ -15,6 +15,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 /**
  * Security 설정 Config
  */
@@ -76,12 +79,19 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
      * @return UserDetailsService
      */
     @Bean
-    @Override
-    public UserDetailsService userDetailsService() {
+
+    public UserDetailsService userDetailsService( HttpServletRequest request) {
         return username -> {
             User user = userService.findByUsername(username);
             if (user == null) {
                 throw new UsernameNotFoundException(username);
+            }
+            else{ HttpSession session = request.getSession();
+                // 세션에 로그인 회원 정보 보관
+
+                session.setAttribute("user",user);
+                // 회원가입 후 로그인 페이지로 이동
+
             }
             return user;
         };

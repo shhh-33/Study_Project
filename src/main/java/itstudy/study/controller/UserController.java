@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -19,6 +21,7 @@ import java.util.List;
 @RequiredArgsConstructor
 
 public class UserController {
+
 
     private final UserService userService;
 
@@ -30,12 +33,20 @@ public class UserController {
         return "signup";
     }
 
+ private User user;
+
 
     @PostMapping("/signup")
     public String signup(
-            @ModelAttribute UserRegisterDto userDto
+            @ModelAttribute UserRegisterDto userDto , HttpServletRequest request
     ) {
         userService.signup(userDto.getUsername(), userDto.getPassword());
+        // 로그인 성공 처리
+        // 세션이 있으면 있는 세션 반환, 없으면 신규 세션 생성
+        HttpSession session = request.getSession();
+        // 세션에 로그인 회원 정보 보관
+
+        session.setAttribute("user",user);
         // 회원가입 후 로그인 페이지로 이동
         return "redirect:login";
     }
@@ -51,4 +62,8 @@ public class UserController {
         return "members/memberList";
 
     }
+
+
+
+
 }
