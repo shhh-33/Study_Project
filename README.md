@@ -18,7 +18,7 @@
 
 
 ## 🎈주요 기술
- SpringBoot, Java, HTML/CSS
+ SpringBoot, Java, JavaScript, HTML/CSS
 
 
 
