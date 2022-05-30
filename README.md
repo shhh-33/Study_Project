@@ -11,16 +11,16 @@
 ## 🎈개발 환경
  Window10, JDK 11, Intellij, MySQL, Spring Boot (ver 2.6.4) Gradle, 
  Spring JPA, Spring Sequrity, Thymeleaf, Lombok
-
-
-
 ## 🎈주요 기술
  SpringBoot, Java, JavaScript, HTML/CSS/BootStrap
+ 
+![002](https://user-images.githubusercontent.com/87368059/170905816-d8852b65-cb05-486b-954e-e61bdff12417.jpg)
 
 
 
 
-## 🎈구현 사진
+
+## 🎈시연화면
 
 ![003](https://user-images.githubusercontent.com/87368059/170904306-acc59986-5951-4147-9a7f-8ebd6d6af98a.jpg)
 
