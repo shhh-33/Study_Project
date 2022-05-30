@@ -8,20 +8,34 @@
 ![image](https://user-images.githubusercontent.com/87368059/163926150-0eaf2eb0-5cd7-4f6b-852a-25653f87ca56.png)
 
 
-
-
 ## 🎈개발 환경
- Window10, JDK 11, Intellij, MySQL, Spring Boot (ver 2.6.4) gradle, 
+ Window10, JDK 11, Intellij, MySQL, Spring Boot (ver 2.6.4) Gradle, 
  Spring JPA, Spring Sequrity, Thymeleaf, Lombok
 
 
 
-
 ## 🎈주요 기술
- SpringBoot, Java, JavaScript, HTML/CSS
+ SpringBoot, Java, JavaScript, HTML/CSS/BootStrap
 
 
 
-## 🎈참고 강의  
- - https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-JPA-%ED%99%9C%EC%9A%A9-1/dashboard
- - https://fastcampus.co.kr/dev_online_spring
+
+## 🎈구현 사진
+
+![003](https://user-images.githubusercontent.com/87368059/170904306-acc59986-5951-4147-9a7f-8ebd6d6af98a.jpg)
+
+
+![004](https://user-images.githubusercontent.com/87368059/170904319-b3666d77-a9a6-41fb-9fa9-516faa85c30d.jpg)
+
+
+![005](https://user-images.githubusercontent.com/87368059/170904322-6e5a8f3c-fec5-4555-8cbf-134ef9ed651c.jpg)
+
+
+![006](https://user-images.githubusercontent.com/87368059/170904334-a6ce3866-f4a7-40c0-9560-b341f0132855.jpg)
+
+
+![007](https://user-images.githubusercontent.com/87368059/170904341-4fd58233-8f55-476d-b7ab-3b21058c4e7a.jpg)
+
+
+
+![008](https://user-images.githubusercontent.com/87368059/170904347-c18bf449-790d-4c83-9ae1-fe837dbecdcb.jpg)
